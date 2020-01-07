@@ -1,7 +1,6 @@
 package cf.moviebot.extension
 
 import cf.moviebot.domain.ApiResult
-import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForEntity
