@@ -8,7 +8,7 @@ import org.springframework.web.client.getForEntity
 val mapper = ObjectMapper()
 val typeFactory = mapper.typeFactory!!
 
-inline fun <reified T> RestTemplate.getForEntity(url: String): ApiResult<T>? {
+inline fun <reified T> RestTemplate.getApiResult(url: String): ApiResult<T>? {
     val response = getForEntity<String>(url).body
     val type = typeFactory.constructParametricType(ApiResult::class.java, T::class.java)
     return mapper.readValue(response, type)
