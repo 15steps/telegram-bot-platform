@@ -2,13 +2,16 @@ spring:
   application:
     name: webhook-handler
 
-#management:
-#  endpoint:
-#    health:
-#      show-details: always
-#  endpoints:
-#    web:
-#      exposure:
-#        include: ["health", "metrics", "loggers"]
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "metrics", "loggers"]
 server:
   port: 8081
+
+telegram:
+  endpoint: "https://api.telegram.org"
