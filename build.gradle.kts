@@ -46,6 +46,10 @@ subprojects {
 			jvmTarget = "1.8"
 		}
 	}
+
+	tasks.withType<BootJar> {
+		launchScript()
+	}
 }
 
 
@@ -55,8 +59,4 @@ tasks.withType<Wrapper> {
 
 jib {
 	container.useCurrentTimestamp = true
-}
-
-tasks.withType<BootJar> {
-	launchScript()
 }
