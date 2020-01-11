@@ -16,9 +16,6 @@ class WebhookController(
 ) {
     private val queues = mutableMapOf<String, String>()
 
-    @GetMapping
-    fun index() = "It works"
-
     @PostMapping(value = ["/{botId}"])
     suspend fun handleMO(@PathVariable botId: String, @RequestBody updates: List<Update>) {
         logger().info("Received MO. botId={}, updates={}", botId, updates)
