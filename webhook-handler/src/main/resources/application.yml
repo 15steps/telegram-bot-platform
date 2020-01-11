@@ -1,6 +1,11 @@
 spring:
   application:
     name: webhook-handler
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    username: ${RABBIT_USERNAME}
+    virtual-host: ${RABBIT_VIRTUAL_HOST}
+    password: ${RABBIT_PASSWORD}
 
 management:
   endpoint:

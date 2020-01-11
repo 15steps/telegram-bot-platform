@@ -17,3 +17,12 @@ data class Me(
     @JsonProperty("first_name") val firstName: String,
     @JsonProperty("username") val userName: String
 )
+
+data class Update(
+    @JsonProperty("update_id") val updateId: Long,
+    @JsonProperty("message") val message: Message
+)
+
+data class Message(
+    @JsonProperty("text") val text: String
+)
