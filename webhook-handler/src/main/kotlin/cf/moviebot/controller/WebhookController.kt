@@ -17,7 +17,7 @@ class WebhookController(
     private val queues = mutableMapOf<String, String>()
 
     @PostMapping(value = ["/{botId}"])
-    suspend fun handleMO(@PathVariable botId: String, @RequestBody updates: List<Update>) {
+    suspend fun handleMO(@PathVariable botId: String, @RequestBody updates: List<Update>): Map<String, String> {
         logger().info("Received MO. botId={}, updates={}", botId, updates)
         coroutineScope {
             launch {
@@ -26,5 +26,6 @@ class WebhookController(
                 logger().info("Published update. queue=$userName")
             }
         }
+        return mapOf("ok" to "true")
     }
 }
