@@ -1,11 +1,11 @@
 package cf.moviebot.extension
 
+import cf.moviebot.util.JacksonUtils
 import cf.moviebot.domain.ApiResult
-import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForEntity
 
-val mapper = ObjectMapper()
+val mapper = JacksonUtils.snakeCaseMapper
 val typeFactory = mapper.typeFactory!!
 
 inline fun <reified T> RestTemplate.getApiResult(url: String): ApiResult<T>? {

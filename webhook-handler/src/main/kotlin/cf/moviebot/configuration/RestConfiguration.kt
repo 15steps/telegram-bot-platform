@@ -1,5 +1,7 @@
 package cf.moviebot.configuration
 
+import cf.moviebot.util.JacksonUtils
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.boot.web.client.RootUriTemplateHandler
@@ -17,6 +19,11 @@ class RestConfiguration(
         return RestTemplateBuilder()
                 .uriTemplateHandler(templateHandler)
                 .build()
+    }
+
+    @Bean
+    fun objectMapper(): ObjectMapper {
+        return JacksonUtils.snakeCaseMapper
     }
 }
 

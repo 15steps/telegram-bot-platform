@@ -12,15 +12,16 @@ data class ApiResult<T>(
 fun <T> ApiResult<T>?.failed(): Boolean = this?.ok?.not() == true
 
 data class Me(
-    @JsonProperty("id") val id: String,
-    @JsonProperty("is_bot") val isBot: Boolean,
-    @JsonProperty("first_name") val firstName: String,
+    val id: String,
+    val isBot: Boolean,
+    val firstName: String,
     @JsonProperty("username") val userName: String
 )
 
 data class Update(
-    @JsonProperty("update_id") val updateId: Long,
-    @JsonProperty("message") val message: Message
+    val updateId: Long,
+    val message: Message,
+    val editedMessage: String
 )
 
 data class Message(
