@@ -1,6 +1,6 @@
 package cf.moviebot.service
 
-import cf.moviebot.domain.Me
+import cf.moviebot.domain.User
 import cf.moviebot.domain.failed
 import cf.moviebot.extension.getApiResult
 import cf.moviebot.extension.toBotUri
@@ -14,9 +14,9 @@ typealias BotId = String
 class TelegramAPIService(
     private val botAPIRestTemplate: RestTemplate
 ) {
-    fun getMe(botId: BotId): Me? {
+    fun getMe(botId: BotId): User? {
         val result = botAPIRestTemplate
-                .getApiResult<Me>(botId.toBotUri("/getMe"))
+                .getApiResult<User>(botId.toBotUri("/getMe"))
         return if (result.failed()) {
             logger().error("Error getting me. result=$result")
             null

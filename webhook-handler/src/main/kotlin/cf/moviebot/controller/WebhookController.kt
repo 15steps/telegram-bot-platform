@@ -21,7 +21,7 @@ class WebhookController(
         logger().info("Received MO. botId={}, updates={}", botId, update)
         coroutineScope {
             launch {
-                val userName = queues[botId] ?: telegramService.getMe(botId)?.userName
+                val userName = queues[botId] ?: telegramService.getMe(botId)?.username
                 updatePublisher.publish(userName, update)
                 logger().info("Published update. queue=$userName")
             }
