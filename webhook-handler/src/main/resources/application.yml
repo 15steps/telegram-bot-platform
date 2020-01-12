@@ -12,12 +12,12 @@ management:
     web:
       exposure:
         include: ["health", "metrics", "loggers"]
+
 server:
   port: 8081
 
 telegram:
   endpoint: "https://api.telegram.org"
-
 ---
 
 spring.profiles: prod

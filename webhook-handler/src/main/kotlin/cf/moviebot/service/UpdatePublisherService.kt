@@ -11,7 +11,7 @@ class UpdatePublisherService(
     private val webhookExchange: Exchange,
     private val registrationService: QueueRegistrationService
 ) {
-    fun publish(queueName: String?, updates: List<Update>) {
+    fun publish(queueName: String?, updates: List<Any>) {
         val queue = queueName ?: "default"
         registrationService.registerBotQueue(queue)
         rabbitTemplate.convertAndSend(webhookExchange.name, queue, updates)

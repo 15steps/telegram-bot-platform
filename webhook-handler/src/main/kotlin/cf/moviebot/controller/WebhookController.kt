@@ -1,6 +1,5 @@
 package cf.moviebot.controller
 
-import cf.moviebot.domain.Update
 import cf.moviebot.logging.logger
 import cf.moviebot.service.TelegramAPIService
 import cf.moviebot.service.UpdatePublisherService
@@ -17,7 +16,7 @@ class WebhookController(
     private val queues = mutableMapOf<String, String>()
 
     @PostMapping(value = ["/{botId}"])
-    suspend fun handleMO(@PathVariable botId: String, @RequestBody updates: List<Update>): Map<String, String> {
+    suspend fun handleMO(@PathVariable botId: String, @RequestBody updates: List<Any>): Map<String, String> {
         logger().info("Received MO. botId={}, updates={}", botId, updates)
         coroutineScope {
             launch {
