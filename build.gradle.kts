@@ -47,16 +47,13 @@ subprojects {
 		}
 	}
 
-	tasks.withType<BootJar> {
-		launchScript()
+	jib {
+		container.useCurrentTimestamp = true
+		from.image = "openjdk:8-alpine"
 	}
 }
 
 
 tasks.withType<Wrapper> {
 	gradleVersion = "5.5"
-}
-
-jib {
-	container.useCurrentTimestamp = true
 }
