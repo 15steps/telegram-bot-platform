@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	id("org.springframework.boot") version "2.2.2.RELEASE"
@@ -35,7 +34,7 @@ subprojects {
 			exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 		}
 	}
-	
+
 	tasks.withType<Test> {
 		useJUnitPlatform()
 	}
@@ -50,6 +49,12 @@ subprojects {
 	jib {
 		container.useCurrentTimestamp = true
 		from.image = "openjdk:8-alpine"
+	}
+}
+
+configure(subprojects.filter { it.name != " shared" }) {
+	dependencies {
+		compile(project(":shared"))
 	}
 }
 

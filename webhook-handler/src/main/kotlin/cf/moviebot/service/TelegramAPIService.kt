@@ -1,10 +1,10 @@
 package cf.moviebot.service
 
-import cf.moviebot.domain.User
-import cf.moviebot.domain.failed
 import cf.moviebot.extension.getApiResult
 import cf.moviebot.extension.toBotUri
 import cf.moviebot.logging.logger
+import cf.moviebot.shared.domain.User
+import cf.moviebot.shared.domain.failed
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestTemplate
 

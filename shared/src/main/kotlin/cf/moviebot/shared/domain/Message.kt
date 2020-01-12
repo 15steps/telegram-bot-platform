@@ -1,4 +1,5 @@
-package cf.moviebot.domain
+package cf.moviebot.shared.domain
+
 
 data class Message(
     val messageId: Long,

@@ -1,6 +1,6 @@
 package cf.moviebot.service
 
-import cf.moviebot.domain.Update
+import cf.moviebot.shared.domain.Update
 import org.springframework.amqp.core.Exchange
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.stereotype.Service

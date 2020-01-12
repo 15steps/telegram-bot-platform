@@ -1,7 +1,7 @@
 package cf.moviebot.extension
 
+import cf.moviebot.shared.domain.ApiResult
 import cf.moviebot.util.JacksonUtils
-import cf.moviebot.domain.ApiResult
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.getForEntity
 

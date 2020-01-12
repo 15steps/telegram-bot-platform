@@ -1,6 +1,5 @@
-package cf.moviebot.domain
+package cf.moviebot.shared.domain
 
-// TODO location
 data class InlineQuery(
     val id: String,
     val user: User,

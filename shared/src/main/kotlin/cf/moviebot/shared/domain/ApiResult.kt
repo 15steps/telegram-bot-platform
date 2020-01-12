@@ -1,4 +1,4 @@
-package cf.moviebot.domain
+package cf.moviebot.shared.domain
 
 data class ApiResult<T>(
     val ok: Boolean? = false,
