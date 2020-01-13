@@ -5,5 +5,5 @@ data class InlineQuery(
     val user: User,
     val query: String,
     val offset: String,
-    val location: Location?
+    val location: Location? = null
 )

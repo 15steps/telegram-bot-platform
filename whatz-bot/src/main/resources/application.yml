@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: whatz-bot
+  rabbitmq:
+    host: localhost
+
+server:
+  port: 8082
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "metrics", "loggers"]
+
+telegram:
+  endpoint: "https://api.telegram.org"
+
+---
+
+spring.profiles: prod
+spring:
+  rabbitmq:
+    host: beaver.rmq.cloudamqp.com
+    username: sjcrebxq
+    virtual-host: sjcrebxq
+    password: ${RABBIT_PASSWORD}

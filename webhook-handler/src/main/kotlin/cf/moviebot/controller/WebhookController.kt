@@ -21,12 +21,12 @@ class WebhookController(
     private val queues = mutableMapOf<String, String>()
 
     @PostMapping(value = ["/{botId}"])
-    suspend fun handleMO(@PathVariable botId: String, @RequestBody update: Update): Map<String, String> {
-        logger().info("Received MO. botId={}, updates={}", botId, update)
+    suspend fun handleMO(@PathVariable token: String, @RequestBody update: Update): Map<String, String> {
+        logger().info("Received MO. token={}, update={}", token, update)
         coroutineScope {
             launch {
-                val userName = queues[botId] ?: telegramService.getMe(botId)?.username
-                updatePublisher.publish(userName, update)
+                val userName = queues[token] ?: telegramService.getMe(token)?.username
+                updatePublisher.publish(token, userName, update)
                 logger().info("Published update. queue=$userName")
             }
         }
