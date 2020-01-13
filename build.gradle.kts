@@ -18,11 +18,14 @@ allprojects {
 }
 
 subprojects {
-	apply(plugin = "org.springframework.boot")
-	apply(plugin = "io.spring.dependency-management")
-	apply(plugin = "org.jetbrains.kotlin.jvm")
-	apply(plugin = "org.jetbrains.kotlin.plugin.spring")
-	apply(plugin = "com.google.cloud.tools.jib")
+	apply {
+		plugin("org.springframework.boot")
+		plugin("kotlin-spring")
+		plugin("io.spring.dependency-management")
+		plugin("org.jetbrains.kotlin.jvm")
+		plugin("org.jetbrains.kotlin.plugin.spring")
+		plugin("com.google.cloud.tools.jib")
+	}
 
 	dependencies {
 		implementation("org.jetbrains.kotlin:kotlin-reflect")

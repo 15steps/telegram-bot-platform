@@ -1,6 +1,6 @@
 package cf.moviebot.service
 
-import cf.moviebot.logging.logger
+import cf.moviebot.shared.logging.logger
 import org.springframework.amqp.core.AmqpAdmin
 import org.springframework.amqp.core.Binding
 import org.springframework.amqp.core.Exchange

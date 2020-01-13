@@ -1,22 +1,20 @@
 package cf.moviebot.service
 
-import cf.moviebot.extension.getApiResult
-import cf.moviebot.extension.toBotUri
-import cf.moviebot.logging.logger
 import cf.moviebot.shared.domain.User
 import cf.moviebot.shared.domain.failed
+import cf.moviebot.shared.extension.getApiResult
+import cf.moviebot.shared.http.RestTemplateRepository
+import cf.moviebot.shared.logging.logger
 import org.springframework.stereotype.Service
-import org.springframework.web.client.RestTemplate
-
-typealias BotId = String
 
 @Service
 class TelegramAPIService(
-    private val botAPIRestTemplate: RestTemplate
+    private val restRepository: RestTemplateRepository
 ) {
-    fun getMe(botId: BotId): User? {
-        val result = botAPIRestTemplate
-                .getApiResult<User>(botId.toBotUri("/getMe"))
+    fun getMe(token: String): User? {
+        val result = restRepository
+                .find(token)
+                .getApiResult<User>("/getMe")
         return if (result.failed()) {
             logger().error("Error getting me. result=$result")
             null

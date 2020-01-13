@@ -1,4 +1,4 @@
-package cf.moviebot.util
+package cf.moviebot.shared.util
 
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper

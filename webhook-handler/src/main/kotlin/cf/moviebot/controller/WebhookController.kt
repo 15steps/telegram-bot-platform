@@ -1,9 +1,9 @@
 package cf.moviebot.controller
 
-import cf.moviebot.logging.logger
 import cf.moviebot.service.TelegramAPIService
 import cf.moviebot.service.UpdatePublisherService
 import cf.moviebot.shared.domain.Update
+import cf.moviebot.shared.logging.logger
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import org.springframework.core.codec.DecodingException
