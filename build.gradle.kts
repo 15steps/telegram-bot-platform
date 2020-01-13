@@ -19,7 +19,7 @@ allprojects {
 
 subprojects {
 	apply {
-		plugin("org.springframework.boot")
+
 		plugin("kotlin-spring")
 		plugin("io.spring.dependency-management")
 		plugin("org.jetbrains.kotlin.jvm")
@@ -55,7 +55,10 @@ subprojects {
 	}
 }
 
-configure(subprojects.filter { it.name != " shared" }) {
+configure(subprojects - project(":shared")) {
+	apply {
+		plugin("org.springframework.boot")
+	}
 	dependencies {
 		compile(project(":shared"))
 	}
