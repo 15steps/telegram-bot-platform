@@ -19,7 +19,6 @@ allprojects {
 
 subprojects {
 	apply {
-
 		plugin("kotlin-spring")
 		plugin("io.spring.dependency-management")
 		plugin("org.jetbrains.kotlin.jvm")
