@@ -1,7 +1,7 @@
 package cf.moviebot.service
 
-import cf.moviebot.shared.domain.SendMessage
 import cf.moviebot.shared.domain.Update
+import cf.moviebot.shared.logging.logger
 import org.springframework.stereotype.Service
 
 @Service
@@ -12,14 +12,15 @@ class WhatsappLinkService(
         const val MARKDOWN_MODE = "MarkdownV2"
     }
     fun sendChatLink(token: String, update: Update) {
-        val username = requireNotNull(update.message?.from?.username) { "username is required" }
+        val chatId = requireNotNull(update.message?.chat?.id) { "username is required" }
         val phone = requireNotNull(update.message?.text) { "text is required" }
-        val sendMessage = SendMessage(
-            chatId = username,
-            text = buildMessageTemplate(phone),
-            parseMode = MARKDOWN_MODE
+        val params = mapOf(
+            "chat_id" to chatId.toString(),
+            "text" to buildMessageTemplate(phone),
+            "parseMode" to MARKDOWN_MODE
         )
-        telegramAPIService.sendMessage(token, sendMessage)
+        val result = telegramAPIService.sendMessage(token, params)
+        logger().info("Message sent to Telegram API. message=$result")
     }
 
     private fun buildChatLink(phone: String): String {
@@ -27,8 +28,5 @@ class WhatsappLinkService(
     }
 
     private fun buildMessageTemplate(phone: String): String =
-        """
-        _Select the following link to open Whatsapp chat:_
-        [https://api.whatsapp.com/send?phone=$phone](✆$phone)        
-        """.trimIndent()
+        "Select the following link to open Whatsapp chat: https://api.whatsapp.com/send?phone=$phone"
 }
