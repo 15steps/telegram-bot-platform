@@ -2,10 +2,7 @@ spring:
   application:
     name: whatz-bot
   rabbitmq:
-    host: beaver.rmq.cloudamqp.com
-    username: sjcrebxq
-    virtual-host: sjcrebxq
-    password: c5orjycb5jMN9sEX3-XigxqflVGd9zpe
+    host: localhost
 
 server:
   port: 8082
